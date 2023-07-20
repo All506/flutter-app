@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "507256928706",
+    "project_id": "dartstarter-project",
+    "storage_bucket": "dartstarter-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:507256928706:android:bc04c60107bddfb6bfbe5b",
+        "android_client_info": {
+          "package_name": "com.example.dartstarter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "507256928706-07ahlt9u65arggn03u2cdrgv2svr4nsk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrEosM6w7J4w86GASHWIo2pMWKCsTXN1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "507256928706-07ahlt9u65arggn03u2cdrgv2svr4nsk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
