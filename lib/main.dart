@@ -25,6 +25,7 @@ void main() {
       routes: {
         '/login/': (context) => const LoginView(),
         '/register/': (context) => const RegisterView(),
+        '/notes/': (context) => const NotesView(),
       },
     ),
   );
@@ -48,7 +49,7 @@ class HomePage extends StatelessWidget {
             var message = "";
             if (user != null) {
               if (user.emailVerified) {
-                return const notesView();
+                return const NotesView();
               }
             } else {
               return const VerifyEmailView();
@@ -66,14 +67,14 @@ class HomePage extends StatelessWidget {
 
 enum MenuAction { logout }
 
-class notesView extends StatefulWidget {
-  const notesView({super.key});
+class NotesView extends StatefulWidget {
+  const NotesView({super.key});
 
   @override
-  State<notesView> createState() => _notesViewState();
+  State<NotesView> createState() => _NotesViewState();
 }
 
-class _notesViewState extends State<notesView> {
+class _NotesViewState extends State<NotesView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
