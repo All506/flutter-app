@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:dartstarter/views/login_view.dart';
+import 'package:dartstarter/views/register_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,12 @@ void main() {
         useMaterial3: true,
       ),
       home: const HomePage(),
+
+      //Defines named routes
+      routes: {
+        '/login/': (context) => const LoginView(),
+        '/register/': (context) => const RegisterView(),
+      },
     ),
   );
 }
@@ -26,47 +33,27 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
+    return FutureBuilder(
+      future: //Initialize firebase to use it later on!
+          Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
       ),
-      body: FutureBuilder(
-        future: //Initialize firebase to use it later on!
-            Firebase.initializeApp(
-          options: DefaultFirebaseOptions.currentPlatform,
-        ),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.done:
-              //Verification of email has to be true
-              final user = FirebaseAuth.instance.currentUser;
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.done:
+            //Verification of email has to be true
+            /*final user = FirebaseAuth.instance.currentUser;
               if (user?.emailVerified ?? false) {
                 print('Email has been verified');
-                return Text('Done');
+                return const Text('Done');
               } else {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const VerifyEmailView()));
-              }
-              return Text('Done');
-            default:
-              return Center(child: const CircularProgressIndicator());
-          }
-        },
-      ),
+                return const VerifyEmailView();
+              }*/
+            return LoginView();
+          default:
+            return const Center(child: CircularProgressIndicator());
+        }
+      },
     );
-  }
-}
-
-class VerifyEmailView extends StatefulWidget {
-  const VerifyEmailView({super.key});
-
-  @override
-  State<VerifyEmailView> createState() => _VerifyEmailViewState();
-}
-
-class _VerifyEmailViewState extends State<VerifyEmailView> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
   }
 }
