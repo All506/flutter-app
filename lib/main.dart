@@ -1,4 +1,5 @@
 // ignore_for_file: avoid_print
+import 'package:dartstarter/constants/routes.dart';
 import 'package:dartstarter/views/login_view.dart';
 import 'package:dartstarter/views/register_view.dart';
 import 'package:dartstarter/views/verify_email_view.dart';
@@ -23,9 +24,9 @@ void main() {
 
       //Defines named routes
       routes: {
-        '/login/': (context) => const LoginView(),
-        '/register/': (context) => const RegisterView(),
-        '/notes/': (context) => const NotesView(),
+        loginRoute: (context) => const LoginView(),
+        registerRoute: (context) => const RegisterView(),
+        notesRoute: (context) => const NotesView(),
       },
     ),
   );
@@ -52,6 +53,7 @@ class HomePage extends StatelessWidget {
                 return const NotesView();
               }
             } else {
+              print(user);
               return const VerifyEmailView();
             }
             return Text(message);
